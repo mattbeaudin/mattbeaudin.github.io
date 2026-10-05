@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Martian+Mono:wdth,wght@87.5..100,200..500&display=swap">
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11.12.2/dist/mermaid.min.js"></script>
+<style>
+	/* Palette mirrors css/sass/_variables.scss */
+	:root {
+		--night: #141922; --panel: #1d2430; --rule: #2c3545;
+		--chalk: #e6e9ef; --steel: #8d99ae; --sodium: #f0a93b;
+		--pad: 48px; --chrome: 37px;
+	}
+	* { box-sizing: border-box; margin: 0; }
+	body {
+		display: grid;
+		place-items: center;
+		padding: var(--pad);
+		background:
+			radial-gradient(circle at 15% 0%, #2a3346 0%, transparent 60%),
+			radial-gradient(circle at 100% 100%, rgba(240, 169, 59, .2) 0%, transparent 55%),
+			var(--night);
+	}
+	.window {
+		background: var(--panel);
+		border: 1px solid var(--rule);
+		border-radius: 10px;
+		box-shadow: 0 30px 60px rgba(0, 0, 0, .45);
+		max-width: 100%;
+		overflow: hidden;
+	}
+	.bar {
+		align-items: center;
+		border-bottom: 1px solid var(--rule);
+		display: flex;
+		gap: 8px;
+		height: 36px;
+		padding: 0 14px;
+	}
+	.bar i { background: var(--rule); border-radius: 50%; height: 12px; width: 12px; }
+	.window img { display: block; width: 100%; }
+	pre {
+		color: var(--chalk);
+		font: 20px/1.5 'Martian Mono', ui-monospace, monospace;
+		padding: 24px 28px;
+		white-space: pre-wrap;
+		word-break: break-word;
+	}
+
+	/* phone: bezel instead of window chrome */
+	.phone { --chrome: 24px; }
+	.phone .bar { display: none; }
+	.phone .window { border: 12px solid #0b0e13; border-radius: 44px; width: 380px; }
+
+	/* diagram: no chrome, roomier */
+	.diagram .bar { display: none; }
+	.diagram pre { padding: 40px; }
+	.diagram svg { display: block; height: auto; max-width: none !important; width: 100%; }
+
+	/* text figures fill the width so they stay legible when scaled down */
+	.terminal .window, .diagram .window { width: 100%; }
+
+	/* thumb: fit inside the fixed 1600x1000 viewport, never crop */
+	.thumb { height: 100vh; overflow: hidden; }
+	.thumb .window { max-height: 100%; width: auto; }
+	.thumb .window img { max-height: calc(100vh - 2 * var(--pad) - var(--chrome)); max-width: 100%; width: auto; }
+	/* text thumbs fill the tile; the svg letterboxes inside a fixed height, the script shrinks terminal text to fit */
+	.thumb.terminal .window, .thumb.diagram .window { width: 100%; }
+	.thumb.terminal pre { font-size: 32px; }
+	.thumb.diagram svg { height: calc(100vh - 2 * var(--pad) - 82px); }
+</style>
+</head>
+<body class="{{MODE}}">
+<div class="window"><div class="bar"><i></i><i></i><i></i></div>{{CONTENT}}</div>
+<script>
+	// frame.sh waits for body.ready; it is never set when Mermaid fails, so the render times out.
+	// Initialise before load, or Mermaid's own startOnLoad renders first with the default theme.
+	window.mermaid && mermaid.initialize({ startOnLoad: false, theme: 'dark' });
+	addEventListener('load', async () => {
+		await document.fonts.ready;
+		if (document.body.classList.contains('diagram')) {
+			// run() draws an error graphic instead of rejecting; parse() rejects.
+			await mermaid.parse(document.querySelector('.mermaid').textContent);
+			await mermaid.run();
+		}
+		// A thumb whose content overflows the tile would be cropped: fail instead.
+		const win = document.querySelector('.window');
+		const pre = document.querySelector('.thumb.terminal pre');
+		for (let size = 32; pre && size > 12 && win.scrollHeight > innerHeight - 96; size--) pre.style.fontSize = size + 'px';
+		if (document.body.classList.contains('thumb') && win.scrollHeight > innerHeight - 96) return;
+		document.body.classList.add('ready');
+	});
+</script>
+</body>
+</html>

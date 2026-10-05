@@ -178,3 +178,10 @@ figure {
 		margin-top: 0.5rem;
 	}
 }
+
+/* Images rendered by the case-study skill carry their own frame. */
+figure img.framed,
+.projects img.framed {
+	border: 0;
+	border-radius: 0;
+}
