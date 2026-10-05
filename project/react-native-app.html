@@ -1,118 +1,79 @@
 <!doctype html>
 <html lang="en">
 	<head>
-		<script src="https://use.fontawesome.com/ffe38fe83e.js"></script>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<title>Matthew Beaudin - Portfolio</title>
-		<meta name="description" content="Matthew Beaudin's online portfolio">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>React Native Radio App - Matthew Beaudin</title>
+		<meta name="description" content="Rebuilding a live radio app in React Native.">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400..700;1,400&family=Martian+Mono:wdth,wght@87.5..100,200..500&display=swap">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 		<link rel="stylesheet" href="../css/style.min.css">
-		<link rel="shortcut icon" href="../images/icon.png" />
+		<link rel="shortcut icon" href="../images/icon.png">
 	</head>
 	<body>
 		<nav>
-			<ul class="nav-list">
-				<li class="nav-title">
-					<a href="../">Matthew Beaudin</a>
-				</li>
-				<li class="nav-item nav-right">
-					<a href="../MatthewBeaudin-Resume.pdf">Resume</a>
-				</li>
-				<li class="nav-item">
-					<a href="../#contact-me">Contact</a>
-				</li>
-				<button class="nav-toggle">
-					<i class="icon-bar"></i>
-					<i class="icon-bar"></i>
-					<i class="icon-bar"></i>
-				</button>
-			</ul>
-			<ul class="mobile-list">
-				<li class="nav-item">
-					<a href="../MatthewBeaudin-Resume.pdf">Resume</a>
-				</li>
-				<li class="nav-item">
-					<a href="../#contact-me">Contact Me</a>
-				</li>
-			</ul>
+			<a class="nav-title" href="../">Matthew Beaudin</a>
+			<a class="nav-link" href="../MatthewBeaudin-Resume.pdf">Resume</a>
+			<a class="nav-link" href="#contact">Contact</a>
 		</nav>
-		<section class="case-study">
-			<div class="container">
-				<p>
-					<a href="/"><i class="fa fa-chevron-left"></i> Go Back To Landing Page</a>
-				</p>
-				<h2>React Native Radio App</h2>
-				<div class="row">
-					<div class="col col-m-7">
-						<h3>Situation</h3>
-						<p>
-							This was a re-write/modernization of an existing app.
-							The original app was out of date and needed to be updated to comply with app store requirements.
-						</p>
-
-						<h3>Task</h3>
-						<ul>
-							<li>Re-write the app using React Native</li>
-							<li>Implement the mockup design</li>
-							<li>Provide client an easy way to change advertisements</li>
-						</ul>
-
-						<h3>Action</h3>
-						<p>
-							I decided to use React Native because I had experience using React and I didn't want to make the iOS/Android versions separately.
-							I successfully implemented the mockup design and got it to work on different screen sizes.
-							The biggest issue I faced was implementing the inverse shadow around the curved notch.
-							At the time, React Native didn't have this type of shadow implemented.
-							I settled on using an SVG of the shape/shadow, then sizing and positioning it to the middle of the screen.
-						</p>
-
-						<h3>Result</h3>
-						<p>
-							It was a good decision to work with React Native as it cut my development time in half and allowed me to build modular code easier.
-							This project did suffer when it came time to update the app again for compliance reasons.
-							I used <a href="https://expo.dev/">Expo's</a> audio library for this and for some reason on Android it would take a VERY long time to load.
-							This was alleviated by downgrading to a version of Expo that didn't include that breaking change.
-							I'm still awaiting a fix from them as of the time of writing. 
-						</p>
+		<main>
+			<section>
+				<a class="back" href="../#projects"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i> Back to projects</a>
+				<h1>React Native Radio App</h1>
+				<div class="split">
+					<div class="figures">
+						<figure>
+							<img alt="Original mockup" src="./images/mbn-mockup-1.jpg">
+							<figcaption>Original mockup design</figcaption>
+						</figure>
+						<figure>
+							<img alt="Specific screen size mockup" src="./images/mbn-mockup-2.jpg">
+							<figcaption>Mockup using iPhone layout</figcaption>
+						</figure>
 					</div>
-					<div class="col col-m-5">
-						<div class="container-small">
-							<img class="float" alt="Original mockup" src="./images/mbn-mockup-1.jpg">
-							<p style="text-align:center;"><i>Original mockup design</i></p>
-						</div>
-						<div class="container-small">
-							<img class="float" alt="Specific screen size mockup" src="./images/mbn-mockup-2.jpg">
-							<p style="text-align:center;"><i>Mockup using iPhone layout</i></p>
-						</div>
-					</div>
+					<h2>Situation</h2>
+					<p>
+						This was a re-write/modernization of an existing app.
+						The original app was out of date and needed to be updated to comply with app store requirements.
+					</p>
+
+					<h2>Task</h2>
+					<ul>
+						<li>Re-write the app using React Native</li>
+						<li>Implement the mockup design</li>
+						<li>Provide client an easy way to change advertisements</li>
+					</ul>
+
+					<h2>Action</h2>
+					<p>
+						I decided to use React Native because I had experience using React and I didn't want to make the iOS/Android versions separately.
+						I successfully implemented the mockup design and got it to work on different screen sizes.
+						The biggest issue I faced was implementing the inverse shadow around the curved notch.
+						At the time, React Native didn't have this type of shadow implemented.
+						I settled on using an SVG of the shape/shadow, then sizing and positioning it to the middle of the screen.
+					</p>
+
+					<h2>Result</h2>
+					<p>
+						It was a good decision to work with React Native as it cut my development time in half and allowed me to build modular code easier.
+						This project did suffer when it came time to update the app again for compliance reasons.
+						I used <a href="https://expo.dev/">Expo's</a> audio library for this and for some reason on Android it would take a VERY long time to load.
+						This was alleviated by downgrading to a version of Expo that didn't include that breaking change.
+						I'm still awaiting a fix from them as of the time of writing. 
+					</p>
 				</div>
-			</div>
-		</section>
-		<footer id="contact-me">
-			<hr>
-			<div class="container">
-				<h5 class="mt-60">Contact Me</h5>
-				<div class="row">
-					<div class="col col-s-6">
-						<p>
-							Email me @ <span class="copyable">beaudinm@msu.edu</span>
-						</p>
-					</div>
-					<div class="col-s-6">
-						<a class="social-link" href="https://github.com/mattbeaudin/" aria-label="My Github"><i class="fa fa-github-square"></i></a>
-						<a class="social-link" href="https://www.linkedin.com/in/matt-beaudin/" aria-label="My LinkedIn"><i class="fa fa-linkedin-square"></i></a>
-					</div>
-				</div>
+			</section>
+		</main>
+		<footer id="contact">
+			<h2>Contact</h2>
+			<p><a class="email" href="mailto:matt@redbarksoftware.com">matt@redbarksoftware.com</a></p>
+			<div class="social">
+				<a href="https://github.com/mattbeaudin/" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+				<a href="https://www.linkedin.com/in/matt-beaudin/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
 			</div>
 		</footer>
-		<script type="text/javascript" src="../js/main.js"></script>
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-91187449-1"></script>
-		<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-
-			gtag('config', 'UA-91187449-1');
-		</script>
+		<script src="../js/main.js"></script>
 	</body>
 </html>

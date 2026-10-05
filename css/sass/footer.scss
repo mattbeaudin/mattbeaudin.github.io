@@ -1,10 +1,24 @@
-footer,
-.footer {
-    background: $footer-background;
-    bottom: 0;
-    height: $footer-height;
-    left: 0;
-    padding: 30px 0 60px;
-    position: absolute;
-    width: 100%;
+footer {
+	border-top: 1px solid $rule;
+	margin: 0 auto;
+	max-width: $container;
+	padding: 3rem $gutter 4rem;
+
+	.email {
+		font-size: $text-h3;
+	}
+
+	.social {
+		display: flex;
+		gap: 1.25rem;
+		font-size: 1.75rem;
+
+		a {
+			color: $steel;
+
+			&:hover {
+				color: $chalk;
+			}
+		}
+	}
 }

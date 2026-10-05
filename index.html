@@ -1,171 +1,85 @@
 <!doctype html>
 <html lang="en">
 	<head>
-		<script src="https://use.fontawesome.com/ffe38fe83e.js"></script>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<title>Matthew Beaudin - Portfolio</title>
-		<meta name="description" content="Matthew Beaudin's online portfolio">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Matthew Beaudin - Software Engineer</title>
+		<meta name="description" content="Matthew Beaudin, software engineer working on backend services and infrastructure.">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400..700;1,400&family=Martian+Mono:wdth,wght@87.5..100,200..500&display=swap">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 		<link rel="stylesheet" href="./css/style.min.css">
-		<link rel="shortcut icon" href="./images/icon.png" />
+		<link rel="shortcut icon" href="./images/icon.png">
 	</head>
 	<body>
 		<nav>
-			<ul class="nav-list">
-				<li class="nav-title">
-					<a href="./">Matthew Beaudin</a>
-				</li>
-				<li class="nav-item nav-right">
-					<a href="./MatthewBeaudin-Resume.pdf">Resume</a>
-				</li>
-				<li class="nav-item">
-					<a href="./#contact-me">Contact</a>
-				</li>
-				<button class="nav-toggle">
-					<i class="icon-bar"></i>
-					<i class="icon-bar"></i>
-					<i class="icon-bar"></i>
-				</button>
-			</ul>
-			<ul class="mobile-list">
-				<li class="nav-item">
-					<a href="./MatthewBeaudin-Resume.pdf">Resume</a>
-				</li>
-				<li class="nav-item">
-					<a href="./#contact-me">Contact Me</a>
-				</li>
-			</ul>
+			<a class="nav-title" href="./">Matthew Beaudin</a>
+			<a class="nav-link" href="./MatthewBeaudin-Resume.pdf">Resume</a>
+			<a class="nav-link" href="#contact">Contact</a>
 		</nav>
-		<section id="intro">
-			<div class="container">
-				<h1 class="m-0">
-					Hi, I'm Matthew
-				</h1>
-				<h2>I'm a Web/Software Developer</h2>
-			</div>
-		</section>
-		<hr>
-		<section id="about-me">
-			<div class="container">
-				<div class="row">
-					<div class="col col-m-6">
-						<h3>About Me</h3>
+		<main>
+			<section class="hero">
+				<h1><span class="brace" aria-hidden="true">{</span> Matthew Beaudin <span class="brace" aria-hidden="true">}</span></h1>
+				<div class="intro">
+					<div class="bio">
+						<p class="tagline">Software engineer at MORSE Corp. Backend services, infrastructure, and the pipelines between them.</p>
 						<p>
-							I'm an Experience Architecture student at Michigan State University and I'll be graduating in the Spring 2024.
-							I've been working as a Full Stack Developer for 6 years, 3 of which were remote (and counting).
+							I've been building software professionally for <span data-since="2016">10</span> years.
+							I graduated from Michigan State University in Spring 2024 with a degree in Experience Architecture.
 						</p>
 						<p>
-							I'm currently maintaining various sites utilizing <strong>.NET 7</strong>, <strong>Python (Django)</strong>, and a mobile app using <strong>React Native</strong>.
+							Day to day I work in Python, C++, TypeScript, Kotlin and Rust, and ship with Docker, Kubernetes and GitLab CI.
 						</p>
 					</div>
-					<div class="col col-m-6">
-						<div class="avatar-image">
-							<img src="./images/me.jpeg" alt="A picture of me holding a cat and a mug of coffee" />
-						</div>
-					</div>
+					<img src="./images/me.jpeg" alt="Matthew holding a cat and a mug of coffee">
 				</div>
-			</div>
-		</section>
-		<hr>
-		<section id="projects">
-			<div class="container">
-				<h3>Key Projects</h3>
-				<p>
-					Here's some of my projects that I've worked on over the past few years.
-				</p>
-				<div class="row">
-					<div class="col col-s-6">
-						<div class="card">
-							<img src="./images/mbn-screen.jpeg" alt="React Native app screenshot" class="card-img">
-							<div class="card-body">
-								<h4 class="card-title">React Native App</h4>
-								<p class="card-text">
-									Read about how I helped create a live radio app using React Native.
-								</p>
-
-								<ul class="badges">
-									<li>React Native</li>
-									<li>JavaScript</li>
-								</ul>
-								
-								<a href="./project/react-native-app.html">
-									Read More
-									<i class="fa fa-chevron-right"></i>
-								</a>
+			</section>
+			<section id="projects">
+				<h2>Projects</h2>
+				<p>A few things I've built.</p>
+				<ul class="projects">
+					<li>
+						<a href="./project/react-native-app.html">
+							<img src="./images/mbn-screen.jpeg" alt="">
+							<div>
+								<h3>React Native radio app</h3>
+								<p>Rebuilding a live radio app in React Native for iOS and Android.</p>
+								<p class="stack">React Native, JavaScript</p>
 							</div>
-						</div>
-					</div>
-					<div class="col col-s-6">
-						<div class="card">
-							<img src="./project/images/portfolio-screen.jpeg" alt="A screenshot of my portfolio" class="card-img">
-							<div class="card-body">
-								<h4 class="card-title">My Portfolio</h4>
-								<p class="card-text">
-									Read about the process I went through to create my portfolio.
-								</p>
-								
-								<ul class="badges">
-									<li>UX</li>
-									<li>HTML</li>
-									<li>CSS</li>
-								</ul>
-
-								<a href="./project/portfolio.html">
-									Read More
-									<i class="fa fa-chevron-right"></i>
-								</a>
+						</a>
+					</li>
+					<li>
+						<a href="./project/portfolio.html">
+							<img src="./project/images/portfolio-screen.jpeg" alt="">
+							<div>
+								<h3>This portfolio</h3>
+								<p>Redesigning my portfolio around a small hand-rolled CSS framework.</p>
+								<p class="stack">UX, HTML, CSS</p>
 							</div>
-						</div>
-					</div>
-					<div class="col col-s-6 ">
-						<div class="card">
-							<img src="./images/virid-screen.jpeg" alt="A screenshot of a brand guidelines page" class="card-img">
-							<div class="card-body">
-								<h4 class="card-title">Brand Guidelines</h4>
-								<p class="card-text">
-									Read about how I modernized an existing Brand Guidelines templating system.
-								</p>
-								
-								<ul class="badges">
-									<li>.NET 7</li>
-									<li>Umbraco CMS</li>
-								</ul>
-								
-								<a href="./project/brand-guidelines.html">
-									Read More
-									<i class="fa fa-chevron-right"></i>
-								</a>
+						</a>
+					</li>
+					<li>
+						<a href="./project/brand-guidelines.html">
+							<img src="./images/virid-screen.jpeg" alt="">
+							<div>
+								<h3>Brand guidelines</h3>
+								<p>Modernizing a brand guidelines templating system so clients can manage it without a developer.</p>
+								<p class="stack">.NET 7, Umbraco CMS</p>
 							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<footer id="contact-me">
-			<hr>
-			<div class="container">
-				<h5 class="mt-60">Contact Me</h5>
-				<div class="row">
-					<div class="col col-s-6">
-						<p>
-							Email me @ <span class="copyable">beaudinm@msu.edu</span>
-						</p>
-					</div>
-					<div class="col-s-6">
-						<a class="social-link" href="https://github.com/mattbeaudin/" aria-label="My Github"><i class="fa fa-github-square"></i></a>
-						<a class="social-link" href="https://www.linkedin.com/in/matt-beaudin/" aria-label="My LinkedIn"><i class="fa fa-linkedin-square"></i></a>
-					</div>
-				</div>
+						</a>
+					</li>
+				</ul>
+			</section>
+		</main>
+		<footer id="contact">
+			<h2>Contact</h2>
+			<p><a class="email" href="mailto:matt@redbarksoftware.com">matt@redbarksoftware.com</a></p>
+			<div class="social">
+				<a href="https://github.com/mattbeaudin/" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+				<a href="https://www.linkedin.com/in/matt-beaudin/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
 			</div>
 		</footer>
-		<script type="text/javascript" src="./js/main.js"></script>
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-91187449-1"></script>
-		<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-
-			gtag('config', 'UA-91187449-1');
-		</script>
+		<script src="./js/main.js"></script>
 	</body>
 </html>

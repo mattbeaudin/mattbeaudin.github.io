@@ -1,115 +1,72 @@
 <!doctype html>
 <html lang="en">
 	<head>
-		<script src="https://use.fontawesome.com/ffe38fe83e.js"></script>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<title>Matthew Beaudin - Portfolio</title>
-		<meta name="description" content="Matthew Beaudin's online portfolio">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>My Portfolio - Matthew Beaudin</title>
+		<meta name="description" content="How I redesigned my portfolio around a small custom CSS framework.">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400..700;1,400&family=Martian+Mono:wdth,wght@87.5..100,200..500&display=swap">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 		<link rel="stylesheet" href="../css/style.min.css">
-		<link rel="shortcut icon" href="../images/icon.png" />
+		<link rel="shortcut icon" href="../images/icon.png">
 	</head>
 	<body>
 		<nav>
-			<ul class="nav-list">
-				<li class="nav-title">
-					<a href="../">Matthew Beaudin</a>
-				</li>
-				<li class="nav-item nav-right">
-					<a href="../MatthewBeaudin-Resume.pdf">Resume</a>
-				</li>
-				<li class="nav-item">
-					<a href="../#contact-me">Contact</a>
-				</li>
-				<button class="nav-toggle">
-					<i class="icon-bar"></i>
-					<i class="icon-bar"></i>
-					<i class="icon-bar"></i>
-				</button>
-			</ul>
-			<ul class="mobile-list">
-				<li class="nav-item">
-					<a href="../MatthewBeaudin-Resume.pdf">Resume</a>
-				</li>
-				<li class="nav-item">
-					<a href="../#contact-me">Contact Me</a>
-				</li>
-			</ul>
+			<a class="nav-title" href="../">Matthew Beaudin</a>
+			<a class="nav-link" href="../MatthewBeaudin-Resume.pdf">Resume</a>
+			<a class="nav-link" href="#contact">Contact</a>
 		</nav>
-		<section class="case-study">
-			<div class="container">
-				<p>
-					<a href="/"><i class="fa fa-chevron-left"></i> Go Back To Landing Page</a>
-				</p>
-				<h2>My Portfolio</h2>
-				<div class="row">
-					<div class="col col-m-7">
-						<p>
-							Before I took on the assignment of redesigning my portfolio, it was in pretty bad shape. It wasn’t mobile friendly, it wasn’t easy to edit content, and customizing the frontend was hard to do as I didn’t have a defined workflow. As a Frontend Developer, a site with this many issues isn’t something I’d want to show off to any employer.
-						</p>
-						<p>
-							For the next iteration of my portfolio I’d need something that:
-						</p>
-						<ul>
-							<li>Is mobile friendly</li>
-							<li>Allows me to edit HTML faster</li>
-							<li>Used a custom CSS framework</li>
-							<li>Looks nice</li>
-						</ul>
+		<main>
+			<section>
+				<a class="back" href="../#projects"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i> Back to projects</a>
+				<h1>My Portfolio</h1>
+				<div class="split">
+					<div class="figures">
+						<figure>
+							<img alt="Old portfolio screenshot" src="./images/oldportfolio.PNG">
+							<figcaption>Original portfolio design</figcaption>
+						</figure>
 					</div>
-					<div class="col col-m-5">
-						<div class="container-small">
-							<img class="float" alt="Old portfolio screenshot" src="./images/oldportfolio.PNG">
-							<p style="text-align:center;"><i>Original portfolio design</i></p>
-						</div>
-					</div>
+					<p>
+						Before I took on the assignment of redesigning my portfolio, it was in pretty bad shape. It wasn’t mobile friendly, it wasn’t easy to edit content, and customizing the frontend was hard to do as I didn’t have a defined workflow. As a Frontend Developer, a site with this many issues isn’t something I’d want to show off to any employer.
+					</p>
+					<p>
+						For the next iteration of my portfolio I’d need something that:
+					</p>
+					<ul>
+						<li>Is mobile friendly</li>
+						<li>Allows me to edit HTML faster</li>
+						<li>Used a custom CSS framework</li>
+						<li>Looks nice</li>
+					</ul>
+					<p>
+						This redesign was essentially based around the CSS framework. Making my own framework would allow me to write custom UI modules, give me the freedom of having a lightweight and easy to use code base, and would look good on a portfolio. Using a larger frontend framework wouldn’t be very beneficial in this situation, as it’s a small site and content is relatively simple.
+					</p>
+					<p>
+						The web is currently flooded with over-engineered sites that take too long to load. My portfolio site doesn’t need to use the same framework that a massive social media company uses. The minified size of my framework is 28.1 KB and Bootstrap’s is 147 KB minified. I could compress even more if I used gzip but I’m still testing some build processes so that will have to wait. 
+					</p>
+					<p>
+						Making the site work well on all devices was surprisingly easy. Most of the content on the portfolio is essentially the same on desktop and mobile. The hard part was understanding how to build a CSS grid system. In CSS, websites are crafted using columns and rows (mostly). Mainstream frameworks include a wide range of column and row sizing options that you can apply. But I don’t need all the extra bells and whistles, just something functional and light.
+					</p>
+					<p>
+						The biggest benefit of my framework is how little HTML you have to write. Larger frameworks use multiple CSS class names per HTML element. This can lead to writing way more code than you actually need, as well as making it difficult to manage. Since the scope of the portfolio is relatively small, I don’t need the majority of what these have to offer.
+					</p>
+					<p>
+						The best aspect of this project to me is the framework. It’s simplicity is it’s advantage since it’s essentially the bare bones of what a website needs to look halfway decent. With some more work I can also use it with component based Javascript frameworks like React, Elm, etc. 
+					</p>
 				</div>
-				<div class="row">
-					<div class="col col-m-7">
-						<p>
-							This redesign was essentially based around the CSS framework. Making my own framework would allow me to write custom UI modules, give me the freedom of having a lightweight and easy to use code base, and would look good on a portfolio. Using a larger frontend framework wouldn’t be very beneficial in this situation, as it’s a small site and content is relatively simple.
-						</p>
-						<p>
-							The web is currently flooded with over-engineered sites that take too long to load. My portfolio site doesn’t need to use the same framework that a massive social media company uses. The minified size of my framework is 28.1 KB and Bootstrap’s is 147 KB minified. I could compress even more if I used gzip but I’m still testing some build processes so that will have to wait. 
-						</p>
-						<p>
-							Making the site work well on all devices was surprisingly easy. Most of the content on the portfolio is essentially the same on desktop and mobile. The hard part was understanding how to build a CSS grid system. In CSS, websites are crafted using columns and rows (mostly). Mainstream frameworks include a wide range of column and row sizing options that you can apply. But I don’t need all the extra bells and whistles, just something functional and light.
-						</p>
-						<p>
-							The biggest benefit of my framework is how little HTML you have to write. Larger frameworks use multiple CSS class names per HTML element. This can lead to writing way more code than you actually need, as well as making it difficult to manage. Since the scope of the portfolio is relatively small, I don’t need the majority of what these have to offer.
-						</p>
-						<p>
-							The best aspect of this project to me is the framework. It’s simplicity is it’s advantage since it’s essentially the bare bones of what a website needs to look halfway decent. With some more work I can also use it with component based Javascript frameworks like React, Elm, etc. 
-						</p>
-					</div>
-				</div>
-			</div>
-		</section>
-		<footer id="contact-me">
-			<hr>
-			<div class="container">
-				<h5 class="mt-60">Contact Me</h5>
-				<div class="row">
-					<div class="col col-s-6">
-						<p>
-							Email me @ <span class="copyable">beaudinm@msu.edu</span>
-						</p>
-					</div>
-					<div class="col-s-6">
-						<a class="social-link" href="https://github.com/mattbeaudin/" aria-label="My Github"><i class="fa fa-github-square"></i></a>
-						<a class="social-link" href="https://www.linkedin.com/in/matt-beaudin/" aria-label="My LinkedIn"><i class="fa fa-linkedin-square"></i></a>
-					</div>
-				</div>
+			</section>
+		</main>
+		<footer id="contact">
+			<h2>Contact</h2>
+			<p><a class="email" href="mailto:matt@redbarksoftware.com">matt@redbarksoftware.com</a></p>
+			<div class="social">
+				<a href="https://github.com/mattbeaudin/" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+				<a href="https://www.linkedin.com/in/matt-beaudin/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
 			</div>
 		</footer>
-		<script type="text/javascript" src="../js/main.js"></script>
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-91187449-1"></script>
-		<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-
-			gtag('config', 'UA-91187449-1');
-		</script>
+		<script src="../js/main.js"></script>
 	</body>
 </html>

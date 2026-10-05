@@ -9,22 +9,19 @@
 @import "sass/variables";
 
 html {
-    position: relative;
-    min-height: 100%;
+    color-scheme: dark;
+    -webkit-text-size-adjust: 100%;
 }
 
 body {
-    background-color: $background-color;
-    color: $text-color;
-    font-family: $font-family-body;
-    font-weight: $font-weight;
-    margin: 0 0 $footer-height;
+    background-color: $night;
+    color: $chalk;
+    font-family: $font-body;
+    font-size: $text-base;
+    line-height: 1.6;
 }
 
+@import "sass/text";
+@import "sass/nav";
 @import "sass/content";
 @import "sass/footer";
-@import "sass/form";
-@import "sass/grid";
-@import "sass/nav";
-@import "sass/text";
-@import "sass/util";
