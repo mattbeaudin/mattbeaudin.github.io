@@ -1,0 +1,38 @@
+url: https://matthewbeaud.in
+# No Pages theme: the site ships its own layouts and CSS
+theme: null
+
+sass:
+  style: compressed
+
+# Keep straight quotes as written; no auto ids on headings
+kramdown:
+  smart_quotes: ["apos", "apos", "quot", "quot"]
+  auto_ids: false
+
+plugins:
+  - jekyll-sitemap
+
+collections:
+  projects:
+    output: true
+    permalink: /project/:name.html
+
+defaults:
+  - scope:
+      type: projects
+    values:
+      layout: project
+  - scope:
+      path: blog
+    values:
+      sitemap: false
+
+exclude:
+  - CLAUDE.md
+  - docs
+  - justfile
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - README*

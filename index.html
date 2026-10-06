@@ -1,24 +1,8 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Matthew Beaudin - Software Engineer</title>
-		<meta name="description" content="Matthew Beaudin, software engineer working on backend services and infrastructure.">
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400..700;1,400&family=Martian+Mono:wdth,wght@87.5..100,200..500&display=swap">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
-		<link rel="stylesheet" href="./css/style.min.css">
-		<link rel="shortcut icon" href="./images/icon.png">
-	</head>
-	<body>
-		<nav>
-			<a class="nav-title" href="./">Matthew Beaudin</a>
-			<a class="nav-link" href="./MatthewBeaudin-Resume.pdf">Resume</a>
-			<a class="nav-link" href="#contact">Contact</a>
-		</nav>
-		<main>
+---
+layout: default
+title: Matthew Beaudin - Software Engineer
+description: Matthew Beaudin, software engineer working on backend services and infrastructure.
+---
 			<section class="hero">
 				<h1><span class="brace" aria-hidden="true">{</span><span class="name">Matthew Beaudin</span><span class="brace" aria-hidden="true">}</span></h1>
 				<div class="intro">
@@ -32,57 +16,26 @@
 							Day to day I work in Python, C++, TypeScript, Kotlin and Rust, and ship with Docker, Kubernetes and GitLab CI.
 						</p>
 					</div>
-					<img src="./images/me.jpeg" alt="Matthew holding a cat and a mug of coffee">
+					<img src="{{ '/images/me.jpeg' | relative_url }}" alt="Matthew holding a cat and a mug of coffee">
 				</div>
 			</section>
 			<section id="projects">
 				<h2>Projects</h2>
 				<p>A few things I've built.</p>
 				<ul class="projects">
+{% assign ps = site.projects | sort: "order" %}
+{%- for p in ps %}
 					<li>
-						<a href="./project/lm-telem.html">
-							<img class="framed" src="./project/images/lm-telem-thumb.webp" alt="">
+						<a href="{{ p.url | relative_url }}">
+							<img class="framed" src="{{ '/project/images/' | append: p.slug | append: '-thumb.webp' | relative_url }}" alt="">
 							<div>
-								<h3>LM Telem</h3>
-								<p>Free telemetry sharing and lap comparison for a Le Mans Ultimate team.</p>
-								<p class="stack">React, TypeScript, uPlot, FastAPI, PostgreSQL, DuckDB, Docker</p>
+								<h3>{{ p.tile_title }}</h3>
+								<p>{{ p.description }}</p>
+								<p class="stack">{{ p.stack }}</p>
 								<p class="more">Read the case study <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
 							</div>
 						</a>
 					</li>
-					<li>
-						<a href="./project/mbn-live.html">
-							<img class="framed" src="./project/images/mbn-live-thumb.webp" alt="">
-							<div>
-								<h3>MBN Live</h3>
-								<p>A live radio app for Android and iOS, rewritten from React Native to Kotlin Multiplatform.</p>
-								<p class="stack">Kotlin Multiplatform, Compose Multiplatform, Ktor, GitHub Actions</p>
-								<p class="more">Read the case study <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-							</div>
-						</a>
-					</li>
-					<li>
-						<a href="./project/portfolio.html">
-							<img class="framed" src="./project/images/portfolio-thumb.webp" alt="">
-							<div>
-								<h3>This portfolio</h3>
-								<p>Redesigning my portfolio around a small hand-rolled CSS framework.</p>
-								<p class="stack">HTML, SCSS, JavaScript, GitHub Pages</p>
-								<p class="more">Read the case study <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>
-							</div>
-						</a>
-					</li>
+{%- endfor %}
 				</ul>
 			</section>
-		</main>
-		<footer id="contact">
-			<h2>Contact</h2>
-			<p><a class="email" href="mailto:matt@redbarksoftware.com">matt@redbarksoftware.com</a></p>
-			<div class="social">
-				<a href="https://github.com/mattbeaudin/" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
-				<a href="https://www.linkedin.com/in/matt-beaudin/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
-			</div>
-		</footer>
-		<script src="./js/main.js"></script>
-	</body>
-</html>

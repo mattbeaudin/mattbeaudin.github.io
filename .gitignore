@@ -1,2 +1,5 @@
-.venv
+_site
+.jekyll-cache
+.bundle
+vendor
 .vscode
