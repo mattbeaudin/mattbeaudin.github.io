@@ -1,0 +1,9 @@
+[project]
+name = "mattbeaudin-github-io"
+version = "0.1.0"
+description = "Personal online portfolio/resume website that makes me seem competent."
+requires-python = ">=3.13"
+dependencies = [
+    "libsass>=0.23.0",
+    "watchfiles>=1.3.0",
+]
