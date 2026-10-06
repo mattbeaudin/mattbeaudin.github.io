@@ -123,7 +123,7 @@ Leave the head links, nav, `.back` link, footer and `../` paths unchanged.
 
 ## 7. Verify and hand off
 1. Check that `grep -c 'project/<slug>.html' index.html` prints `1`.
-2. Start the site: `yarn live` in the background on :8000, if it isn't already running.
+2. Start the site: `just serve` in the background on :8000, if it isn't already running.
 3. Screenshot `http://localhost:8000/project/<slug>.html` and `http://localhost:8000/` at the `"1280, 800"` and `"375, 812"` viewports, using `npx -y playwright@1.62.1 screenshot --full-page`, into the scratch directory.
 4. Open the screenshots with the Read tool and check that:
    - the figures sit right of the text on desktop and below it on mobile;

@@ -8,11 +8,13 @@ Static personal portfolio site served by GitHub Pages at `matthewbeaud.in` (see 
 
 ## Commands
 
+Tooling is uv (Python), no Node: `pysassc` (libsass) compiles the CSS, `watchfiles` rebuilds it, and `http.server` serves it. `uv run` installs them on first use.
+
 ```sh
-yarn build   # compile css/style.scss -> css/style.min.css (compressed)
-yarn watch   # same, rebuilding on change
-yarn live    # live-server on http://localhost:8000
-just dev     # watch + live together
+just build   # compile css/style.scss -> css/style.min.css (compressed)
+just watch   # same, rebuilding on change
+just serve   # http.server on http://localhost:8000 (no live reload; refresh)
+just dev     # watch + serve together
 ```
 
 ## Structure that matters
