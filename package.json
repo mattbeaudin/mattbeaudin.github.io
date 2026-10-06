@@ -9,7 +9,7 @@
   "scripts": {
     "watch": "sass --watch css/style.scss:css/style.min.css --style compressed",
     "build": "sass css/style.scss:css/style.min.css --style compressed",
-    "live": "live-server --port=8000 --no-browser"
+    "live": "node node_modules/live-server/live-server.js --port=8000 --no-browser"
   },
   "dependencies": {
     "live-server": "^1.2.1",

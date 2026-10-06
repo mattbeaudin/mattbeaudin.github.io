@@ -1,77 +1,62 @@
-/*** Colors ***/
-$primary-color: #6200ee;
-$secondary-color: #03dac6;
-$header-color: #fff;
-$text-color: #fff;
-$link-color: lighten($secondary-color, 25%);
-$box-shadow-xsmall: 0px 0px 5px 0 rgb(0 0 0 / 20%);
-$box-shadow-small: 0 2px 6px 0 rgb(0 0 0 / 40%);
-$box-shadow-large: 0 6px 12px 0 rgb(0 0 0 / 40%);
+/*** Palette ***/
+$night: #141922;   // page background
+$panel: #1d2430;   // raised surfaces
+$rule: #2c3545;    // borders, dividers
+$chalk: #e6e9ef;   // body text
+$steel: #8d99ae;   // secondary text
+$sodium: #f0a93b;  // braces, links, focus
 
-/*** Font ***/
-@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
-$font-family-header: 'Nunito', sans-serif;
-$font-family-body: 'Raleway', sans-serif;
-$font-weight: 400;
-$line-height: 1.4;
+/*** Type ***/
+$font-display: 'Martian Mono', ui-monospace, monospace;
+$font-body: 'Hanken Grotesk', system-ui, sans-serif;
 
-/*** Misc ***/
-$border-radius-default: 4px;
+// 1.333 scale from an 18px base
+$text-small: 0.875rem;
+$text-base: 1.125rem;
+$text-h3: 1.333rem;
+$text-h2: 1.777rem;
+$text-h1: 2.369rem;
 
-/*** Icons ***/
-$icon-font-size: 4rem;
-$icon-font-color: #fff;
+$measure: 68ch;
 
-/*** Page Colors ***/
-$dark-font-color: #fff;
-$dark-bg-color: darken(#424251, 10%);
-$background-color: $dark-bg-color;
-$content-background: $dark-bg-color;
+/*** Layout ***/
+$container: 60rem;
+$gutter: 1.25rem;
+$bp-m: 48em;
 
-/*** Card ***/
-$card-background: linear-gradient(65deg, darken($primary-color, 0%), darken($secondary-color, 15%));
+/*** Motion ***/
+$ease-out: cubic-bezier(.2, .7, .2, 1);
+$t-quick: 150ms;  // hover/focus feedback
 
-/*** Buttons ***/
-$button-font-size: 1rem;
-$button-padding: 10px 30px;
-$button-primary-background: $primary-color;
-$button-primary-color: #fff;
-$button-secondary-background: $secondary-color;
-$button-secondary-color: #fff;
+// Sodium braces that slide in around an element; pair with braces-shown
+@mixin braces($offset: 0.75em) {
+	position: relative;
 
-/*** Forms ***/
-$form-control-border: 1px solid $text-color;
-$form-control-color: $text-color;
-$form-control-focus-color: $secondary-color;
+	&::before,
+	&::after {
+		color: $sodium;
+		opacity: 0;
+		position: absolute;
+		transition: opacity $t-quick $ease-out, transform $t-quick $ease-out;
+	}
 
-/*** Nav Bar ***/
-$navbar-height: 80px;
-$navbar-background: linear-gradient(45deg, darken($primary-color, 15%), darken($secondary-color, 15%));
-$navbar-link-color: #fff;
-$navbar-link-active-color: #fff;
-$navbar-font-family: $font-family-header;
-$navbar-link-size: 1.75rem;
-$navbar-link-weight: 400;
-$navbar-title-color: $navbar-link-active-color;
-$navbar-title-size: 2.5rem;
-$navbar-title-weight: $navbar-link-weight;
+	&::before {
+		content: '{';
+		left: -$offset;
+		transform: translateX(0.25em);
+	}
 
-$navbar-toggle-border-color: #fff;
-$navbar-toggle-background: transparent;
+	&::after {
+		content: '}';
+		right: -$offset;
+		transform: translateX(-0.25em);
+	}
+}
 
-/*** Footer ***/
-$footer-background: lighten($dark-bg-color, 2%);
-$footer-height: 325px;
-
-/*** Transitions ***/
-$transition-duration: 250ms;
-
-/*** Grid ***/
-$grid-columns: 12 !default;
-$grid-gutter-width: 1rem !default;
-$grid-outer-margin: 2rem !default;
-$grid-breakpoints:
-  s 48em 46rem,
-  m 62em 61rem,
-  l 75em 71rem !default;
-$grid-max-width: 75em !default;
+@mixin braces-shown {
+	&::before,
+	&::after {
+		opacity: 1;
+		transform: none;
+	}
+}

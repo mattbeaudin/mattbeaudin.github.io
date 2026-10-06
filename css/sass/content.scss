@@ -1,125 +1,251 @@
-.card {
-    background: $card-background;
-    box-shadow: $box-shadow-small;
-    transition-duration: $transition-duration;
-    transition-property: all;
-    margin-right: 15px;
-    margin-bottom: 15px;
+section {
+	margin: 0 auto;
+	max-width: $container;
+	padding: 4rem $gutter;
 
-    &:hover {
-        box-shadow: $box-shadow-large;
-        transform: translateY(-2px);
-    }
-
-    .card-img {
-        border-bottom: 1px solid #ddd;
-    }
-
-    .card-body {
-        padding: 15px;
-    }
-    
-    .card-title {
-        color: $header-color;
-        font-size: 1.25rem;
-        margin-bottom: 15px;
-    }
-
-    p {
-        margin-bottom: 0.5rem;
-    }
+	& + section {
+		border-top: 1px solid $rule;
+	}
 }
 
-.badges {
-    display: block;
-    line-height: unset;
-    margin-left: 0;
-    margin-bottom: 1rem;
+/*** Hero: the page opens as an object literal ***/
+.hero {
+	padding-top: 3rem;
 
-    li {
-        border: 1px solid #fff;
-        display: inline-block;
-        font-size: 12px;
-        padding: 4px 8px;
-    }
+	h1 {
+		font-size: clamp(1.375rem, 6.5vw, 3.25rem);
+		font-stretch: 100%;
+		margin-bottom: 1rem;
+		white-space: nowrap;
+
+		// Three columns so the name's track can grow and push the braces apart
+		align-items: baseline;
+		column-gap: 0.3em;
+		display: grid;
+		grid-template-columns: auto 1fr auto;
+		width: fit-content;
+	}
+
+	// Centered and clipped, so it's uncovered from the middle as its track grows
+	.name {
+		display: flex;
+		justify-content: center;
+		overflow: hidden;
+	}
+
+	.brace {
+		color: $sodium;
+		font-weight: 200;
+	}
+
+	.tagline {
+		color: $steel;
+		font-size: $text-h3;
+		line-height: 1.5;
+		margin-bottom: 1.25rem;
+	}
+
+	.bio p:last-child {
+		margin-bottom: 0;
+	}
 }
 
-@media (max-width: 48em) {
-    .card {
-        margin-right: 0;
-    }
+/* Bio text with the photo beside it; on phones the photo follows the text. */
+.intro {
+	display: grid;
+	gap: 2rem;
+
+	img {
+		aspect-ratio: 3 / 4;
+		border-radius: 6px;
+		object-fit: cover;
+		width: 12rem;
+	}
+
+	@media (min-width: $bp-m) {
+		align-items: start;
+		gap: 3rem;
+		grid-template-columns: minmax(0, 1fr) 13rem;
+
+		img {
+			width: 100%;
+		}
+	}
 }
 
-.avatar-image {
-    box-shadow: $box-shadow-small;
-    border-radius: 50%;
-    height: 275px;
-    width: 275px;
-    margin: 0 auto;
+@media (prefers-reduced-motion: no-preference) {
+	.hero {
+		h1 {
+			animation: braces-open 900ms $ease-out both;
+		}
 
-    img {
-        object-fit: cover;
-        height: 275px;
-        width: 275px;
-        border-radius: 50%;
-    }
+		.intro {
+			animation: fade-in 500ms 600ms ease-out both;
+		}
+	}
 }
 
-img {
-    height: auto;
-    width: 100%;
-
-    &.headshot {
-        width: 175px;
-    }
+@keyframes braces-open {
+	from { grid-template-columns: auto 0fr auto; }
 }
 
-.pillar {
-    background: $primary-color;
-    height: 100%;
-    margin: 0 auto;
-    width: 4px;
+@keyframes fade-in {
+	from { opacity: 0; }
 }
 
-.float {
-    box-shadow: $box-shadow-small;
+/*** Projects ***/
+/* An index of rows: the thumbnail on the left with its text beside it,
+   one hairline between rows. On phones the text sits under the image. */
+.projects {
+	list-style: none;
+	margin-top: 2.5rem;
+	max-width: none;
+	padding: 0;
+
+	li {
+		border-top: 1px solid $rule;
+		padding: 2rem 0;
+	}
+
+	li + li {
+		margin-top: 0;
+	}
+
+	li:last-child {
+		padding-bottom: 0;
+	}
+
+	a {
+		color: inherit;
+		display: grid;
+		gap: 1rem;
+		text-decoration: none;
+
+		@media (min-width: $bp-m) {
+			align-items: center;
+			gap: 2.5rem;
+			grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+		}
+
+		&:hover h3,
+		&:focus-visible h3 {
+			@include braces-shown;
+			color: $sodium;
+		}
+
+		&:hover .more,
+		&:focus-visible .more {
+			text-decoration: underline;
+
+			i {
+				transform: translateX(0.25rem);
+			}
+		}
+	}
+
+	img {
+		aspect-ratio: 16 / 10;
+		border: 1px solid $rule;
+		border-radius: 4px;
+		object-fit: cover;
+		object-position: top;
+		width: 100%;
+	}
+
+	h3 {
+		font-family: $font-display;
+		font-size: $text-h3;
+		font-stretch: 87.5%;
+		margin-bottom: 0.75rem;
+		transition: color $t-quick $ease-out;
+		width: fit-content;
+		@include braces(0.9em);
+	}
+
+	p {
+		margin-bottom: 0.75rem;
+	}
+
+	.stack {
+		color: $steel;
+		font-size: $text-small;
+	}
+
+	.more {
+		color: $sodium;
+		font-size: $text-small;
+		margin: 1.25rem 0 0;
+
+		i {
+			font-size: 0.75em;
+			margin-left: 0.25rem;
+			transition: transform $t-quick $ease-out;
+		}
+	}
 }
 
-.dark-bg {
-    background: $dark-bg-color;
+/*** Case studies ***/
+.back {
+	display: inline-block;
+	text-decoration: none;
+	font-size: $text-small;
+	margin-bottom: 2rem;
 
-    p {
-        color: $dark-font-color;
-    }
+	i {
+		transition: transform $t-quick $ease-out;
+	}
 
-    h1, label {
-        color: #fff;
-    }
-
-    h1:after{
-        background: #fff;
-    }
-    
-    .copyable {
-        color: #fff;
-    }
+	&:hover i,
+	&:focus-visible i {
+		transform: translateX(-0.25rem);
+	}
 }
 
-.copyable {
-    cursor: pointer;
-    text-decoration: underline;
+/* Figures come first in the markup so they can float right on desktop;
+   on phones they're reordered below the text. */
+.split {
+	display: flex;
+	flex-direction: column;
+
+	.figures {
+		order: 1;
+	}
+
+	h2 {
+		font-size: $text-h3;
+		margin: 2rem 0 0.75rem;
+	}
+
+	.figures + h2 {
+		margin-top: 0;
+	}
+
+	@media (min-width: $bp-m) {
+		display: flow-root;
+
+		.figures {
+			float: right;
+			margin: 0 0 1.5rem 2.5rem;
+			width: 40%;
+		}
+
+		p, ul {
+			max-width: none;
+		}
+	}
 }
 
-.social-link {
-    color: $icon-font-color;
-    font-size: $icon-font-size;
-    margin-right: 15px;
-    
-    &:hover, &:active {
-        color: darken($icon-font-color, 15%);
-    }
+figure {
+	margin-bottom: 2rem;
 
-    .fa {
-        vertical-align: top;
-    }
+	img {
+		border: 1px solid $rule;
+		border-radius: 4px;
+	}
+
+	figcaption {
+		color: $steel;
+		font-size: $text-small;
+		margin-top: 0.5rem;
+	}
 }

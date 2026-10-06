@@ -1,192 +1,52 @@
 nav {
-	background: $navbar-background;
-	box-shadow: $box-shadow-large;
-	font-family: $navbar-font-family;
-	padding: 0;
-
-	.nav-list {
-		align-items: center;
-		color: $navbar-link-color;
-		display: flex;
-		font-size: $navbar-link-size;
-		font-weight: $navbar-link-weight;
-		height: $navbar-height;
-		list-style: none;
-		padding: 0 30px;
-		margin: 0 auto;
-		max-width: 1200px;
-
-		.nav-item {
-			display: none;
-			font-size: $navbar-link-size;
-			font-weight: $navbar-link-weight;
-			padding-left: 45px;
-
-			a {
-				color: $navbar-link-color;
-				transition: all $transition-duration ease-in-out;
-
-				&:before,
-				&:after {
-					color: transparent;
-					position: absolute;
-					transition: all $transition-duration ease-out;
-				}
-
-				&.active
-				&:active,
-				&:focus,
-				&:hover {
-					color: $navbar-link-active-color;
-
-					&:before,
-					&:after {
-						color: $navbar-link-active-color;
-					}
-
-					&:before {
-						transform: translateX(-14px);
-					}
-
-					&:after {
-						transform: translateX(4px);
-					}
-				}
-			}
-
-			&.nav-right {
-				margin-left: auto;
-			}
-		}
-
-		.nav-title a {
-			color: $navbar-title-color;
-			font-size: $navbar-title-size * .85;
-			font-weight: $navbar-title-weight;
-
-			&:before {
-				content: '{';
-				padding-right: 5px;
-			}
-
-			&:after {
-				content: '}';
-				padding-left: 5px;
-			}
-	
-			&.active
-			&:active,
-			&:focus,
-			&:hover {
-					color: $navbar-title-color;
-			}
-		}
-
-		.nav-toggle {
-			background-color: $navbar-toggle-background;
-			border: 2px solid $navbar-toggle-border-color;
-			border-radius: $border-radius-default;
-			cursor: pointer;
-			margin-left: auto;
-			padding: 5px 10px;
-			width: 75px;
-			transition: all $transition-duration ease-in-out;
-
-			&:hover {
-				background-color: $navbar-toggle-border-color;
-
-				.icon-bar {
-					background-color: $secondary-color;
-				}
-			}
-
-			.icon-bar {
-				background-color: $navbar-toggle-border-color;
-				border-radius: $border-radius-default;
-				display: block;
-				height: 2px;
-				margin: 8px 0;
-				padding: 0;
-			}
-		}
-	}
-
-	.mobile-list {
-		display: none;
-		padding: 0;
-		margin: 0;
-
-		&.nav-open {
-			display: block;
-		}
-
-		.nav-item {
-			border-top: 2px solid rgba(255, 255, 255, 0.25);
-			cursor: pointer;
-
-			&.active,
-			&:focus,
-			&:hover {
-				background-color: $primary-color;
-			}
-
-			a {
-				color: $navbar-link-color;
-				font-size: 1.5rem;
-				display: block;
-				padding: 10px 20px;
-			}
-		}
-	}
+	align-items: baseline;
+	border-bottom: 1px solid $rule;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem 1.25rem;
+	font-size: 1rem;
+	margin: 0 auto;
+	max-width: $container;
+	padding: 1.25rem $gutter;
 
 	a {
+		color: $chalk;
 		text-decoration: none;
 	}
-}
 
-@media (min-width: 48em) {
-	nav .nav-list {
-		.nav-title a {
-			font-size: $navbar-title-size;
+	.nav-title {
+		font-family: $font-display;
+		font-size: 0.875rem;
+		font-stretch: 87.5%;
+		margin-right: auto;
+
+		&::before,
+		&::after {
+			color: $sodium;
 		}
-	
-		.nav-item {
-			display: inline;
 
-			a {
-				&:before {
-					content: '{';
-					transform: translateX(-7px);
-				}
-
-				&:after {
-					content: '}';
-				}
-			}
-		}
+		&::before { content: '{ '; }
+		&::after { content: ' }'; }
 	}
 
-	.nav-toggle {
-		display: none;
-	}
+	// Links grow the site's braces on hover, a nod to the old nav
+	.nav-link {
+		@include braces;
 
-	.mobile-list {
-		display: none;
-	}
-}
-
-@media(max-width: 38em) {
-	nav .nav-list {
-		padding: 0 15px;
-
-		.nav-title a {
-			font-size: 1em;
+		&:hover,
+		&:focus-visible {
+			@include braces-shown;
 		}
 	}
 }
 
-@media (max-width: 23em) {
-	nav .nav-list .nav-title a {
-		font-size: .75em;
+@media (max-width: 26em) {
+	nav {
+		column-gap: 1rem;
+		font-size: 0.9375rem;
+
+		.nav-title {
+			font-size: 0.75rem;
+		}
 	}
 }
