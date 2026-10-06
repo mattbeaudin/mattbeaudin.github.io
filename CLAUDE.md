@@ -21,8 +21,8 @@ If native gems fail to link against `GLIBC_2.38` during `bundle install`, the sy
 
 ## Structure that matters
 
-- **Layouts:** `_layouts/default.html` holds the `<head>`, nav and footer for every page; `_layouts/project.html` adds the `.back` link, `<h1>`, and the figures column. Shared changes go there once. Asset links are root-relative via `relative_url`.
-- **Case studies:** `_projects/<slug>.md`, published at `/project/<slug>.html`. Front matter: `title`, `tile_title`, `description`, `stack`, `order` (tile order), `figures` (`src`, `alt`, `caption`; images live in `project/images/`). The body is Markdown (`## Situation`, `## Task`, `## Action`, `## Result`).
+- **Layouts:** `_layouts/default.html` holds the `<head>`, nav and footer for every page; `_layouts/project.html` adds the `.back` link, `<h1>`, and the figures column. Shared changes go there once. Asset links are plain root-relative paths (`/css/style.css`).
+- **Case studies:** `_projects/<slug>.md`, published at `/project/<slug>.html`. Front matter: `title`, `description`, `stack`, `order` (tile order), `figures` (`src`, `alt`, `caption`; images live in `project/images/`). The body is Markdown (`## Situation`, `## Task`, `## Action`, `## Result`).
 - **Home:** `index.html` renders one tile per project from `site.projects`, sorted by `order`. The thumbnail is `project/images/<slug>-thumb.webp`.
 - **Styles:** `css/style.scss` plus partials in `_sass/` (theme tokens in `_variables.scss`). Jekyll compiles it to `/css/style.css`; no CSS is committed.
 - **JS:** `js/main.js` only fills `[data-since]` elements with the years since that year.

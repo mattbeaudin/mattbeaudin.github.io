@@ -52,7 +52,7 @@ Read `_projects/*.md` for Matt's voice. It is first person, plain, specific, and
 - **Action:** one or two paragraphs. Include the hardest problem and how he solved it.
 - **Result:** one paragraph.
 - **Tile fields:**
-  - title, in Title Case for the page h1 and sentence case for the tile h3;
+  - one title, used for both the page h1 and the tile h3;
   - a one-line description of 15 words or fewer;
   - a stack line, comma separated.
 - **Slug:** kebab-case from the title. Confirm it with Matt.
@@ -86,7 +86,6 @@ Use the Read tool to open every `.webp` and check it before moving on.
 ```yaml
 ---
 title: <Title>
-tile_title: <Tile title>
 description: <One-line description>
 stack: <Stack line>
 order: <tile position, 1 = first>

@@ -2,13 +2,13 @@
 layout: default
 ---
 			<section>
-				<a class="back" href="{{ '/#projects' | relative_url }}"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i> Back to projects</a>
+				<a class="back" href="/#projects"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i> Back to projects</a>
 				<h1>{{ page.title }}</h1>
 				<div class="split">
 					<div class="figures">
 {%- for f in page.figures %}
 						<figure>
-							<img class="framed" alt="{{ f.alt }}" src="{{ '/project/images/' | append: f.src | relative_url }}">
+							<img class="framed" alt="{{ f.alt }}" src="{{ '/project/images/' | append: f.src }}">
 							<figcaption>{{ f.caption }}</figcaption>
 						</figure>
 {%- endfor %}

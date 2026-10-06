@@ -16,7 +16,7 @@ description: Matthew Beaudin, software engineer working on backend services and 
 							Day to day I work in Python, C++, TypeScript, Kotlin and Rust, and ship with Docker, Kubernetes and GitLab CI.
 						</p>
 					</div>
-					<img src="{{ '/images/me.jpeg' | relative_url }}" alt="Matthew holding a cat and a mug of coffee">
+					<img src="/images/me.jpeg" alt="Matthew holding a cat and a mug of coffee">
 				</div>
 			</section>
 			<section id="projects">
@@ -26,10 +26,10 @@ description: Matthew Beaudin, software engineer working on backend services and 
 {% assign ps = site.projects | sort: "order" %}
 {%- for p in ps %}
 					<li>
-						<a href="{{ p.url | relative_url }}">
-							<img class="framed" src="{{ '/project/images/' | append: p.slug | append: '-thumb.webp' | relative_url }}" alt="">
+						<a href="{{ p.url }}">
+							<img class="framed" src="{{ '/project/images/' | append: p.slug | append: '-thumb.webp' }}" alt="">
 							<div>
-								<h3>{{ p.tile_title }}</h3>
+								<h3>{{ p.title }}</h3>
 								<p>{{ p.description }}</p>
 								<p class="stack">{{ p.stack }}</p>
 								<p class="more">Read the case study <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></p>

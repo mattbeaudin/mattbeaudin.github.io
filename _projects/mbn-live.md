@@ -1,6 +1,5 @@
 ---
 title: MBN Live
-tile_title: MBN Live
 description: A live radio app for Android and iOS, rewritten from React Native to Kotlin Multiplatform.
 stack: Kotlin Multiplatform, Compose Multiplatform, Ktor, GitHub Actions
 order: 2

@@ -1,6 +1,5 @@
 ---
 title: LM Telem
-tile_title: LM Telem
 description: Free telemetry sharing and lap comparison for a Le Mans Ultimate team.
 stack: React, TypeScript, uPlot, FastAPI, PostgreSQL, DuckDB, Docker
 order: 1

@@ -1,6 +1,5 @@
 ---
 title: This portfolio
-tile_title: This portfolio
 description: Redesigning my portfolio around a small hand-rolled CSS framework.
 stack: HTML, SCSS, JavaScript, GitHub Pages
 order: 3
