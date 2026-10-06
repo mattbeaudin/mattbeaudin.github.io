@@ -1,6 +1,6 @@
 ---
 name: case-study
-description: Turn a repository into a portfolio case-study page for matthewbeaud.in, with an interview-driven STAR writeup, framed WebP images, an index tile and a sitemap entry. Use when Matt runs /case-study <local path | GitHub URL> or asks to write up a project.
+description: Turn a repository into a portfolio case-study page for matthewbeaud.in, with an interview-driven STAR writeup, framed WebP images and a front-matter tile. Use when Matt runs /case-study <local path | GitHub URL> or asks to write up a project.
 ---
 
 # /case-study
@@ -16,7 +16,7 @@ Work in a scratch directory: `$CLAUDE_JOB_DIR/tmp/case-study` if it is set, othe
 ## 1. Get the repo
 - **Local path:** use it as it is.
 - **GitHub URL:** `gh repo clone <url> <scratch>/repo -- --depth 200`. If that fails because of auth, ask Matt to run `! gh auth login` or give a local path. Stop until he does.
-- **Existing page:** check whether the repo already has a page: look for a `project/*.html` whose tile or content matches it. If one exists, show Matt its current text and tile and ask whether to update it before the interview. If yes, reuse its slug and treat its text as the starting point for the interview. If no, stop.
+- **Existing page:** check whether the repo already has a page: look for a `_projects/*.md` whose front matter or content matches it. If one exists, show Matt its current text and tile and ask whether to update it before the interview. If yes, reuse its slug and treat its text as the starting point for the interview. If no, stop.
 
 ## 2. Interview
 Use **AskUserQuestion** only for these choices:
@@ -46,13 +46,13 @@ Then run:
 Show Matt the detected stack as a short list and let him correct it before you draft anything.
 
 ## 4. Draft
-Read `project/lm-telem.html` and `project/portfolio.html` for Matt's voice. It is first person, plain, specific, and honest about what went wrong. Draft:
+Read `_projects/*.md` for Matt's voice. It is first person, plain, specific, and honest about what went wrong. Draft:
 - **Situation:** one paragraph.
 - **Task:** a short `<ul>`.
 - **Action:** one or two paragraphs. Include the hardest problem and how he solved it.
 - **Result:** one paragraph.
 - **Tile fields:**
-  - title, in Title Case for the page h1 and sentence case for the tile h3;
+  - one title, used for both the page h1 and the tile h3;
   - a one-line description of 15 words or fewer;
   - a stack line, comma separated.
 - **Slug:** kebab-case from the title. Confirm it with Matt.
@@ -80,54 +80,33 @@ If a capture fails, tell Matt what failed and fall back to a diagram or images h
 Use the Read tool to open every `.webp` and check it before moving on.
 
 ## 6. Render (site-specific: matthewbeaud.in)
-**If you are updating an existing page (step 1):** replace the page and its images, and edit the existing tile **in place** without moving it. Never add a second `<li>` for the same slug. Delete the old page's images once nothing references them, even when they don't follow the `<slug>-N` naming.
+**If you are updating an existing page (step 1):** rewrite the existing `_projects/<slug>.md` and its images, keeping its `order`. Never create a second file for the same slug. Delete the old page's images once nothing references them, even when they don't follow the `<slug>-N` naming.
 
-**Page:** copy `project/lm-telem.html`, then change only these parts:
-- `<title>`: `<Title> - Matthew Beaudin`.
-- `<meta name="description">`: the one-line description.
-- `<h1>`: the title.
-- Inside `<div class="split">`:
-  - first, `<div class="figures">` with one block per image:
-    ```html
-    <figure>
-    	<img class="framed" alt="<alt text>" src="./images/<slug>-N.webp">
-    	<figcaption><caption></figcaption>
-    </figure>
-    ```
-  - then the `<h2>Situation</h2>`, `<h2>Task</h2>`, `<h2>Action</h2>` and `<h2>Result</h2>` sections.
-
-Leave the head links, nav, `.back` link, footer and `../` paths unchanged.
-
-**Tile:** insert this as the first `<li>` inside `<ul class="projects">` in `index.html`:
-```html
-<li>
-	<a href="./project/<slug>.html">
-		<img class="framed" src="./project/images/<slug>-thumb.webp" alt="">
-		<div>
-			<h3><Tile title></h3>
-			<p><One-line description></p>
-			<p class="stack"><Stack line></p>
-		</div>
-	</a>
-</li>
+**Page:** write `_projects/<slug>.md`. Front matter:
+```yaml
+---
+title: <Title>
+description: <One-line description>
+stack: <Stack line>
+order: <tile position, 1 = first>
+figures:
+  - src: <slug>-1.webp
+    alt: <alt text>
+    caption: <caption>
+---
 ```
+Quote any value that contains `: `. Then the body in Markdown: `## Situation`, `## Task` (a `-` list), `## Action` and `## Result`. Write external links as `[text](url){:target="_blank" rel="noopener"}`.
 
-**Sitemap:** add this before `</urlset>` in `sitemap.xml`, unless the `<loc>` is already present:
-```xml
-<url>
-  <loc>https://matthewbeaud.in/project/<slug>.html</loc>
-  <lastmod><today>T00:00:00+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-```
+The layout renders the `<head>`, nav, `.back` link, `<h1>`, figures and footer, and `index.html` builds the tile from the front matter. Don't edit `index.html`, and don't touch the sitemap: `jekyll-sitemap` generates it.
+
+**Tile order:** a new page goes first. Give it `order: 1` and add one to the `order` of every other `_projects/*.md`.
 
 ## 7. Verify and hand off
-1. Check that `grep -c 'project/<slug>.html' index.html` prints `1`.
-2. Start the site: `just serve` in the background on :8000, if it isn't already running.
-3. Screenshot `http://localhost:8000/project/<slug>.html` and `http://localhost:8000/` at the `"1280, 800"` and `"375, 812"` viewports, using `npx -y playwright@1.62.1 screenshot --full-page`, into the scratch directory.
-4. Open the screenshots with the Read tool and check that:
+1. Start the site: `just serve` in the background on :4000, if it isn't already running. Check that `_site/project/<slug>.html` exists and that `grep -c 'project/<slug>.html' _site/index.html` prints `1`.
+2. Screenshot `http://localhost:4000/project/<slug>.html` and `http://localhost:4000/` at the `"1280, 800"` and `"375, 812"` viewports, using `npx -y playwright@1.62.1 screenshot --full-page`, into the scratch directory.
+3. Open the screenshots with the Read tool and check that:
    - the figures sit right of the text on desktop and below it on mobile;
    - no image has a double border;
    - the tile is first and its thumbnail isn't cropped;
    - terminal text is readable at 375px.
-5. Show Matt the screenshots and `git status --short` plus `git diff --stat`. **Don't commit.**
+4. Show Matt the screenshots and `git status --short` plus `git diff --stat`. **Don't commit.**
