@@ -63,7 +63,7 @@ The original spec is `docs/superpowers/specs/2026-10-05-case-study-pipeline-desi
    - **Private:** no capture without his OK. If he declines, use the diagram only.
    - **Output sizes:** figures are about 1200px wide. The thumbnail is exactly 1600×1000 and is the first visual reframed at 16:10. Everything is converted to WebP in `project/images/<slug>-*.webp`.
 6. **Render** (the site-specific section).
-   - Write `project/<slug>.html` from the structure of `project/react-native-app.html`: head, nav, `.back`, `.split` with `.figures` first, the STAR h2s, and the footer. Figures use `class="framed"`.
+   - Write `project/<slug>.html` from the structure of `project/lm-telem.html`: head, nav, `.back`, `.split` with `.figures` first, the STAR h2s, and the footer. Figures use `class="framed"`.
    - Insert the tile as the first `<li>` in `index.html` `.projects`, with `class="framed"` on its thumbnail.
    - Add the page's URL to `sitemap.xml`.
    - If the page already exists, ask first, then replace the page and images. The tile text is updated in place.
