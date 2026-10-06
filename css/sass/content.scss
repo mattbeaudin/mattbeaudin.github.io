@@ -75,30 +75,47 @@ section {
 }
 
 /*** Projects ***/
+/* An index of rows: the thumbnail on the left with its text beside it,
+   one hairline between rows. On phones the text sits under the image. */
 .projects {
-	display: grid;
-	gap: 3rem 2rem;
 	list-style: none;
 	margin-top: 2.5rem;
 	max-width: none;
 	padding: 0;
 
-	@media (min-width: $bp-m) {
-		grid-template-columns: repeat(2, minmax(0, 1fr));
+	li {
+		border-top: 1px solid $rule;
+		padding: 2rem 0;
 	}
 
 	li + li {
 		margin-top: 0;
 	}
 
+	li:last-child {
+		padding-bottom: 0;
+	}
+
 	a {
 		color: inherit;
-		display: block;
+		display: grid;
+		gap: 1rem;
 		text-decoration: none;
+
+		@media (min-width: $bp-m) {
+			align-items: center;
+			gap: 2.5rem;
+			grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+		}
 
 		&:hover h3,
 		&:focus-visible h3 {
 			color: $sodium;
+		}
+
+		&:hover .more,
+		&:focus-visible .more {
+			text-decoration: underline;
 		}
 	}
 
@@ -107,18 +124,35 @@ section {
 		border: 1px solid $rule;
 		border-radius: 4px;
 		object-fit: cover;
-		margin-bottom: 1rem;
 		object-position: top;
 		width: 100%;
 	}
 
+	h3 {
+		font-family: $font-display;
+		font-size: $text-h3;
+		font-stretch: 87.5%;
+		margin-bottom: 0.75rem;
+	}
+
 	p {
-		margin-bottom: 0.5rem;
+		margin-bottom: 0.75rem;
 	}
 
 	.stack {
 		color: $steel;
 		font-size: $text-small;
+	}
+
+	.more {
+		color: $sodium;
+		font-size: $text-small;
+		margin: 1.25rem 0 0;
+
+		i {
+			font-size: 0.75em;
+			margin-left: 0.25rem;
+		}
 	}
 }
 
