@@ -17,6 +17,20 @@ section {
 		font-stretch: 100%;
 		margin-bottom: 1rem;
 		white-space: nowrap;
+
+		// Three columns so the name's track can grow and push the braces apart
+		align-items: baseline;
+		column-gap: 0.3em;
+		display: grid;
+		grid-template-columns: auto 1fr auto;
+		width: fit-content;
+	}
+
+	// Centered and clipped, so it's uncovered from the middle as its track grows
+	.name {
+		display: flex;
+		justify-content: center;
+		overflow: hidden;
 	}
 
 	.brace {
@@ -61,17 +75,22 @@ section {
 
 @media (prefers-reduced-motion: no-preference) {
 	.hero {
-		.brace {
-			animation: brace-open 700ms cubic-bezier(.2, .7, .2, 1) both;
+		h1 {
+			animation: braces-open 900ms $ease-out both;
 		}
 
-		.brace:first-child { --from: 0.5rem; }
-		.brace:last-child { --from: -0.5rem; }
+		.intro {
+			animation: fade-in 500ms 600ms ease-out both;
+		}
 	}
 }
 
-@keyframes brace-open {
-	from { transform: translateX(var(--from)); }
+@keyframes braces-open {
+	from { grid-template-columns: auto 0fr auto; }
+}
+
+@keyframes fade-in {
+	from { opacity: 0; }
 }
 
 /*** Projects ***/
@@ -110,12 +129,17 @@ section {
 
 		&:hover h3,
 		&:focus-visible h3 {
+			@include braces-shown;
 			color: $sodium;
 		}
 
 		&:hover .more,
 		&:focus-visible .more {
 			text-decoration: underline;
+
+			i {
+				transform: translateX(0.25rem);
+			}
 		}
 	}
 
@@ -133,6 +157,9 @@ section {
 		font-size: $text-h3;
 		font-stretch: 87.5%;
 		margin-bottom: 0.75rem;
+		transition: color $t-quick $ease-out;
+		width: fit-content;
+		@include braces(0.9em);
 	}
 
 	p {
@@ -152,6 +179,7 @@ section {
 		i {
 			font-size: 0.75em;
 			margin-left: 0.25rem;
+			transition: transform $t-quick $ease-out;
 		}
 	}
 }
@@ -162,6 +190,15 @@ section {
 	text-decoration: none;
 	font-size: $text-small;
 	margin-bottom: 2rem;
+
+	i {
+		transition: transform $t-quick $ease-out;
+	}
+
+	&:hover i,
+	&:focus-visible i {
+		transform: translateX(-0.25rem);
+	}
 }
 
 /* Figures come first in the markup so they can float right on desktop;
@@ -211,11 +248,4 @@ figure {
 		font-size: $text-small;
 		margin-top: 0.5rem;
 	}
-}
-
-/* Images rendered by the case-study skill carry their own frame. */
-figure img.framed,
-.projects img.framed {
-	border: 0;
-	border-radius: 0;
 }

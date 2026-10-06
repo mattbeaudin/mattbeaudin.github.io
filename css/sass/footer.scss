@@ -15,6 +15,7 @@ footer {
 
 		a {
 			color: $steel;
+			transition: color $t-quick $ease-out;
 
 			&:hover {
 				color: $chalk;

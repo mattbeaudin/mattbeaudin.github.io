@@ -31,34 +31,11 @@ nav {
 
 	// Links grow the site's braces on hover, a nod to the old nav
 	.nav-link {
-		position: relative;
+		@include braces;
 
-		&::before,
-		&::after {
-			color: $sodium;
-			opacity: 0;
-			position: absolute;
-			transition: opacity 150ms, transform 150ms;
-		}
-
-		&::before {
-			content: '{';
-			left: -0.75em;
-			transform: translateX(0.25em);
-		}
-
-		&::after {
-			content: '}';
-			right: -0.75em;
-			transform: translateX(-0.25em);
-		}
-
-		&:hover::before,
-		&:hover::after,
-		&:focus-visible::before,
-		&:focus-visible::after {
-			opacity: 1;
-			transform: none;
+		&:hover,
+		&:focus-visible {
+			@include braces-shown;
 		}
 	}
 }

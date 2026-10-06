@@ -41,6 +41,7 @@ a {
 	text-decoration: underline;
 	text-decoration-thickness: 1px;
 	text-underline-offset: 0.2em;
+	transition: color $t-quick $ease-out, text-decoration-color $t-quick $ease-out;
 
 	&:hover {
 		text-decoration-thickness: 2px;
