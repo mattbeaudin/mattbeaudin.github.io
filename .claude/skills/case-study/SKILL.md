@@ -46,7 +46,7 @@ Then run:
 Show Matt the detected stack as a short list and let him correct it before you draft anything.
 
 ## 4. Draft
-Read `project/lm-telem.html` and `project/brand-guidelines.html` for Matt's voice. It is first person, plain, specific, and honest about what went wrong. Draft:
+Read `project/lm-telem.html` and `project/portfolio.html` for Matt's voice. It is first person, plain, specific, and honest about what went wrong. Draft:
 - **Situation:** one paragraph.
 - **Task:** a short `<ul>`.
 - **Action:** one or two paragraphs. Include the hardest problem and how he solved it.
